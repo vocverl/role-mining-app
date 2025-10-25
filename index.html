@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Role Mining Application</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🔍 Role Mining Application</h1>
+            <p class="subtitle">Geautomatiseerde role mining met saturatie analyse</p>
+        </header>
+
+        <!-- Mode Selector -->
+        <div class="mode-selector">
+            <button class="mode-btn active" data-mode="demo">
+                <span class="icon">🎬</span>
+                Demo Modus
+            </button>
+            <button class="mode-btn" data-mode="upload">
+                <span class="icon">📤</span>
+                Upload Modus
+            </button>
+            <button class="mode-btn" data-mode="live">
+                <span class="icon">🔴</span>
+                Live Modus
+            </button>
+        </div>
+
+        <!-- Process Steps Indicator -->
+        <div class="process-steps">
+            <div class="step active" data-step="1">
+                <div class="step-number">1</div>
+                <div class="step-label">Data Import</div>
+            </div>
+            <div class="step-arrow">→</div>
+            <div class="step" data-step="2">
+                <div class="step-number">2</div>
+                <div class="step-label">Role Mining</div>
+            </div>
+            <div class="step-arrow">→</div>
+            <div class="step" data-step="3">
+                <div class="step-number">3</div>
+                <div class="step-label">Proposal</div>
+            </div>
+            <div class="step-arrow">→</div>
+            <div class="step" data-step="4">
+                <div class="step-number">4</div>
+                <div class="step-label">Validatie</div>
+            </div>
+            <div class="step-arrow">→</div>
+            <div class="step" data-step="5">
+                <div class="step-number">5</div>
+                <div class="step-label">Export</div>
+            </div>
+            <div class="step-arrow">→</div>
+            <div class="step" data-step="6">
+                <div class="step-number">6</div>
+                <div class="step-label">GRC Import</div>
+            </div>
+            <div class="step-arrow">→</div>
+            <div class="step" data-step="7">
+                <div class="step-number">7</div>
+                <div class="step-label">Reprovisioning</div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="content">
+            <!-- Step 1: Data Import -->
+            <div class="step-content active" id="step-1">
+                <h2>Stap 1: Data Import</h2>
+
+                <div class="data-sources">
+                    <div class="source-card">
+                        <div class="source-icon">👥</div>
+                        <h3>SuccessFactors (HR)</h3>
+                        <div class="source-status" id="sf-status">Niet geladen</div>
+                        <input type="file" id="sf-upload" accept=".xlsx,.csv" style="display: none;">
+                        <button class="btn-upload" onclick="document.getElementById('sf-upload').click()">
+                            Upload Excel
+                        </button>
+                    </div>
+
+                    <div class="source-card">
+                        <div class="source-icon">🔐</div>
+                        <h3>SAP GRC Access Control</h3>
+                        <div class="source-status" id="grc-status">Niet geladen</div>
+                        <input type="file" id="grc-upload" accept=".xlsx,.csv" style="display: none;">
+                        <button class="btn-upload" onclick="document.getElementById('grc-upload').click()">
+                            Upload Excel
+                        </button>
+                    </div>
+
+                    <div class="source-card">
+                        <div class="source-icon">🌐</div>
+                        <h3>Entra ID / Active Directory</h3>
+                        <div class="source-status" id="ad-status">Niet geladen</div>
+                        <input type="file" id="ad-upload" accept=".xlsx,.csv" style="display: none;">
+                        <button class="btn-upload" onclick="document.getElementById('ad-upload').click()">
+                            Upload Excel
+                        </button>
+                    </div>
+                </div>
+
+                <div class="demo-mode-notice" id="demo-notice">
+                    <div class="notice-icon">ℹ️</div>
+                    <div>
+                        <strong>Demo Modus Actief</strong><br>
+                        Er wordt gebruik gemaakt van demo data om de functionaliteit te tonen.
+                    </div>
+                </div>
+
+                <div class="data-summary" id="data-summary" style="display: none;">
+                    <h3>Geladen Data Overzicht</h3>
+                    <div class="summary-grid">
+                        <div class="summary-item">
+                            <div class="summary-label">Medewerkers</div>
+                            <div class="summary-value" id="total-employees">0</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label">Functies</div>
+                            <div class="summary-value" id="total-functions">0</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label">Rollen (GRC)</div>
+                            <div class="summary-value" id="total-roles">0</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label">AD Groepen</div>
+                            <div class="summary-value" id="total-groups">0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-primary" onclick="RoleMining.startAnalysis()">
+                    Start Role Mining Analyse →
+                </button>
+            </div>
+
+            <!-- Step 2: Role Mining Analysis -->
+            <div class="step-content" id="step-2">
+                <h2>Stap 2: Role Mining Analyse</h2>
+
+                <div class="analysis-progress" id="analysis-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="progress-text" id="progress-text">Analyseren...</div>
+                </div>
+
+                <div class="analysis-results" id="analysis-results" style="display: none;">
+                    <h3>Analyse Resultaten</h3>
+
+                    <div class="result-card">
+                        <h4>🎯 Saturatie Analyse per Functie</h4>
+                        <div id="saturation-by-function"></div>
+                    </div>
+
+                    <div class="result-card">
+                        <h4>📊 Top Opportunities voor Bedrijfsrollen</h4>
+                        <div id="top-opportunities"></div>
+                    </div>
+
+                    <div class="result-card">
+                        <h4>💰 Besparingen Potentieel</h4>
+                        <div class="savings-grid">
+                            <div class="savings-item">
+                                <div class="savings-label">Huidige losse aanvragen per jaar</div>
+                                <div class="savings-value" id="current-requests">0</div>
+                            </div>
+                            <div class="savings-item">
+                                <div class="savings-label">Verwachte reductie</div>
+                                <div class="savings-value highlight" id="expected-reduction">0%</div>
+                            </div>
+                            <div class="savings-item">
+                                <div class="savings-label">Besparing in uren per jaar</div>
+                                <div class="savings-value highlight" id="hours-saved">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-primary" onclick="RoleMining.generateProposal()" style="display: none;" id="btn-generate-proposal">
+                    Genereer Proposal Matrix →
+                </button>
+            </div>
+
+            <!-- Step 3: Proposal Matrix -->
+            <div class="step-content" id="step-3">
+                <h2>Stap 3: Role Mining Proposal</h2>
+
+                <div class="proposal-controls">
+                    <div class="filter-group">
+                        <label>Filter op Functie:</label>
+                        <select id="function-filter">
+                            <option value="">Alle functies</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Min. Saturatie:</label>
+                        <input type="range" id="saturation-threshold" min="50" max="100" value="80" step="5">
+                        <span id="saturation-value">80%</span>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Weergave:</label>
+                        <select id="view-mode">
+                            <option value="matrix">Matrix View</option>
+                            <option value="summary">Samenvatting</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="proposal-legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #4CAF50;"></div>
+                        <span>Hoge saturatie (>80%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #FFC107;"></div>
+                        <span>Gemiddelde saturatie (60-80%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #2196F3;"></div>
+                        <span>Lage saturatie (<60%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #f5f5f5;"></div>
+                        <span>Niet toegewezen</span>
+                    </div>
+                </div>
+
+                <div class="proposal-matrix" id="proposal-matrix">
+                    <!-- Matrix will be generated dynamically -->
+                </div>
+
+                <div class="proposal-actions">
+                    <button class="btn-secondary" onclick="RoleMining.exportProposal()">
+                        📥 Download Proposal (Excel)
+                    </button>
+                    <button class="btn-primary" onclick="RoleMining.startValidation()">
+                        Stuur naar Role Owner voor Validatie →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 4: Validation -->
+            <div class="step-content" id="step-4">
+                <h2>Stap 4: Validatie door Role Owner</h2>
+
+                <div class="validation-info">
+                    <div class="info-icon">✓</div>
+                    <div>
+                        <h3>Bottom-up Proposal, Top-down Beslissing</h3>
+                        <p>De role mining analyse heeft bottom-up voorstellen gegenereerd op basis van actuele gebruiksdata. Als Role Owner kun je nu top-down beslissen welke rollen opgenomen worden in de bedrijfsrollen.</p>
+                    </div>
+                </div>
+
+                <div class="validation-list" id="validation-list">
+                    <!-- Validation items will be generated -->
+                </div>
+
+                <div class="validation-summary" id="validation-summary">
+                    <h3>Validatie Status</h3>
+                    <div class="summary-grid">
+                        <div class="summary-item">
+                            <div class="summary-label">Te valideren</div>
+                            <div class="summary-value" id="pending-validations">0</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label">Goedgekeurd</div>
+                            <div class="summary-value approved" id="approved-validations">0</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label">Afgekeurd</div>
+                            <div class="summary-value rejected" id="rejected-validations">0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-primary" onclick="RoleMining.prepareExport()" id="btn-prepare-export" disabled>
+                    Bereid GRC Export voor →
+                </button>
+            </div>
+
+            <!-- Step 5: Export -->
+            <div class="step-content" id="step-5">
+                <h2>Stap 5: Export naar GRC Role Import File</h2>
+
+                <div class="export-config">
+                    <h3>Export Configuratie</h3>
+
+                    <div class="form-group">
+                        <label>Export Formaat:</label>
+                        <select id="export-format">
+                            <option value="grc-xml">GRC XML Format</option>
+                            <option value="excel">Excel Format</option>
+                            <option value="csv">CSV Format</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Include Only Approved:</label>
+                        <input type="checkbox" id="export-approved-only" checked>
+                    </div>
+
+                    <div class="form-group">
+                        <label>GRC System:</label>
+                        <select id="grc-system">
+                            <option value="grc-ac">SAP GRC Access Control</option>
+                            <option value="grc-brm">SAP GRC BRM</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="export-preview" id="export-preview">
+                    <h3>Preview van Export</h3>
+                    <div class="preview-content" id="preview-content">
+                        <!-- Preview will be shown here -->
+                    </div>
+                </div>
+
+                <div class="export-actions">
+                    <button class="btn-secondary" onclick="RoleMining.downloadExport()">
+                        💾 Download Export File
+                    </button>
+                    <button class="btn-primary" onclick="RoleMining.sendToGRC()">
+                        Verzend naar GRC BRM →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 6: GRC Import -->
+            <div class="step-content" id="step-6">
+                <h2>Stap 6: GRC BRM Import</h2>
+
+                <div class="import-status">
+                    <div class="status-icon" id="import-icon">⏳</div>
+                    <div class="status-message" id="import-message">Wachten op upload naar GRC BRM...</div>
+                </div>
+
+                <div class="import-details" id="import-details" style="display: none;">
+                    <h3>Import Details</h3>
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <span class="detail-label">Import Tijdstip:</span>
+                            <span class="detail-value" id="import-time">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Aantal Business Roles:</span>
+                            <span class="detail-value" id="import-roles-count">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Status:</span>
+                            <span class="detail-value" id="import-status-text">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-primary" onclick="RoleMining.startReprovisioning()" id="btn-start-repro" disabled>
+                    Start Reprovisioning →
+                </button>
+            </div>
+
+            <!-- Step 7: Reprovisioning -->
+            <div class="step-content" id="step-7">
+                <h2>Stap 7: Reprovisioning naar SAP en AD</h2>
+
+                <div class="repro-systems">
+                    <div class="repro-card">
+                        <div class="repro-header">
+                            <div class="repro-icon">🔧</div>
+                            <h3>SAP Systemen</h3>
+                        </div>
+                        <div class="repro-status" id="sap-repro-status">
+                            <div class="status-bar">
+                                <div class="status-fill" id="sap-progress"></div>
+                            </div>
+                            <div class="status-text" id="sap-status-text">Niet gestart</div>
+                        </div>
+                        <div class="repro-details" id="sap-details"></div>
+                    </div>
+
+                    <div class="repro-card">
+                        <div class="repro-header">
+                            <div class="repro-icon">🌐</div>
+                            <h3>Active Directory</h3>
+                        </div>
+                        <div class="repro-status" id="ad-repro-status">
+                            <div class="status-bar">
+                                <div class="status-fill" id="ad-progress"></div>
+                            </div>
+                            <div class="status-text" id="ad-status-text">Niet gestart</div>
+                        </div>
+                        <div class="repro-details" id="ad-details"></div>
+                    </div>
+                </div>
+
+                <div class="repro-summary" id="repro-summary" style="display: none;">
+                    <h3>Reprovisioning Voltooid</h3>
+                    <div class="success-message">
+                        <div class="success-icon">✅</div>
+                        <p>Alle rollen zijn succesvol geprovisioneerd naar de doelsystemen.</p>
+                    </div>
+
+                    <div class="summary-grid">
+                        <div class="summary-item">
+                            <div class="summary-label">Totaal Gebruikers</div>
+                            <div class="summary-value" id="repro-users">0</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label">Nieuwe Rollen</div>
+                            <div class="summary-value" id="repro-roles">0</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label">Verwijderde Rechten</div>
+                            <div class="summary-value" id="repro-removed">0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-primary" onclick="RoleMining.finishProcess()">
+                    ✓ Proces Afronden
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/demo-data.js"></script>
+    <script src="js/role-mining-engine.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

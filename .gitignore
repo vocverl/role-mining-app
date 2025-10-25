@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Uploaded files
+data/*.xlsx
+data/*.csv
+data/*.xls
+
+# Export files
+exports/*.xml
+exports/*.csv
+exports/*.xlsx
+
+# Keep directories
+!data/.gitkeep
+!exports/.gitkeep
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
