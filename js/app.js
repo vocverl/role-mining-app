@@ -295,7 +295,17 @@ const RoleMining = {
     setupProposalControls() {
         const thresholdSlider = document.getElementById('saturation-threshold');
         const thresholdValue = document.getElementById('saturation-value');
+        const functionFilter = document.getElementById('function-filter');
+        const viewMode = document.getElementById('view-mode');
 
+        // Populate function filter dropdown
+        const functions = [...new Set(this.engine.hrData.map(e => e.function))];
+        functionFilter.innerHTML = '<option value="">Alle functies</option>';
+        functions.forEach(func => {
+            functionFilter.innerHTML += `<option value="${func}">${func}</option>`;
+        });
+
+        // Threshold slider handlers
         thresholdSlider.addEventListener('input', (e) => {
             thresholdValue.textContent = e.target.value + '%';
         });
@@ -305,6 +315,43 @@ const RoleMining = {
             const proposal = this.engine.generateProposalMatrix(newThreshold);
             this.displayProposalMatrix(proposal);
         });
+
+        // Function filter handler
+        functionFilter.addEventListener('change', (e) => {
+            this.filterProposalByFunction(e.target.value);
+        });
+
+        // View mode toggle handler
+        viewMode.addEventListener('change', (e) => {
+            this.toggleProposalView(e.target.value);
+        });
+    },
+
+    // Filter proposal by function
+    filterProposalByFunction(functionName) {
+        const rows = document.querySelectorAll('.matrix-table tbody tr');
+        rows.forEach(row => {
+            const firstCell = row.querySelector('td:first-child');
+            if (!functionName || firstCell.textContent.includes(functionName)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    },
+
+    // Toggle between matrix and summary view
+    toggleProposalView(mode) {
+        const matrixDiv = document.getElementById('proposal-matrix');
+        const summaryDiv = document.getElementById('proposal-summary');
+
+        if (mode === 'matrix') {
+            matrixDiv.style.display = 'block';
+            summaryDiv.style.display = 'none';
+        } else {
+            matrixDiv.style.display = 'none';
+            summaryDiv.style.display = 'block';
+        }
     },
 
     // Export proposal

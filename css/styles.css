@@ -127,6 +127,13 @@ header h1 {
     align-items: center;
     min-width: 70px;
     flex-shrink: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.step:hover .step-number {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 3px rgba(44, 60, 138, 0.1);
 }
 
 .step-number {
@@ -249,13 +256,23 @@ header h1 {
     height: 50px;
 }
 
-.source-icon.sap-icon {
-    color: #008fd3;
+.source-icon.sf-icon {
+    color: #0070d2;
+    font-size: 3em;
 }
 
-.source-icon.azure-icon {
-    color: #0078d4;
+.source-icon.grc-icon {
+    color: #008fd3;
     font-size: 3em;
+}
+
+.source-icon.entra-icon {
+    color: #0078d4;
+}
+
+.source-icon.entra-icon svg {
+    width: 50px;
+    height: 50px;
 }
 
 .source-card h3 {
@@ -578,6 +595,8 @@ header h1 {
     position: sticky;
     top: 0;
     z-index: 10;
+    white-space: normal;
+    word-wrap: break-word;
 }
 
 .matrix-table td {
@@ -585,11 +604,16 @@ header h1 {
     border-bottom: 1px solid var(--border-color);
     white-space: normal;
     word-wrap: break-word;
-    min-width: 150px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    min-width: 120px;
+    max-width: 250px;
 }
 
 .matrix-table td:first-child {
-    min-width: 200px;
+    min-width: 180px;
+    max-width: 300px;
+    font-weight: 500;
 }
 
 .matrix-table tr:hover {
