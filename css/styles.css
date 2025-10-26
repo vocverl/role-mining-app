@@ -1,19 +1,19 @@
 /* Role Mining Application Styles */
 
 :root {
-    --primary-color: #1976d2;
-    --secondary-color: #424242;
+    --primary-color: #2c3c8a;
+    --secondary-color: #4aaedf;
     --success-color: #4CAF50;
     --warning-color: #FFC107;
     --danger-color: #f44336;
-    --info-color: #2196F3;
-    --bg-color: #f5f7fa;
+    --info-color: #4aaedf;
+    --bg-color: #f0f4ff;
     --card-bg: #ffffff;
     --text-primary: #212121;
-    --text-secondary: #757575;
-    --border-color: #e0e0e0;
-    --shadow: 0 2px 8px rgba(0,0,0,0.1);
-    --shadow-lg: 0 4px 16px rgba(0,0,0,0.15);
+    --text-secondary: #666666;
+    --border-color: #d4e4f7;
+    --shadow: 0 2px 8px rgba(44,60,138,0.1);
+    --shadow-lg: 0 4px 16px rgba(44,60,138,0.15);
 }
 
 * {
@@ -37,13 +37,29 @@ body {
 
 /* Header */
 header {
-    text-align: center;
     margin-bottom: 30px;
-    padding: 30px 0;
-    background: linear-gradient(135deg, var(--primary-color), #1565c0);
+    padding: 30px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
     border-radius: 12px;
     box-shadow: var(--shadow-lg);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.vitens-logo {
+    height: 60px;
+    background: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+.header-text {
+    flex: 1;
 }
 
 header h1 {
