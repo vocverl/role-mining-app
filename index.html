@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Role Mining Application - Vitens</title>
     <link rel="icon" type="image/x-icon" href="https://www.vitens.nl/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -82,7 +83,9 @@
 
                 <div class="data-sources">
                     <div class="source-card">
-                        <div class="source-icon">👥</div>
+                        <div class="source-icon sap-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.086 15.818c-.438.546-.804 1.049-1.097 1.509-.293.46-.439.825-.439 1.097 0 .195.085.366.256.512.17.147.402.22.695.22.391 0 .85-.159 1.377-.476.527-.318.932-.62 1.219-.903l.073.073c-.293.527-.7 1.025-1.219 1.499-.519.475-1.097.712-1.731.712-.537 0-.99-.158-1.353-.476-.366-.317-.549-.713-.549-1.189 0-.439.134-.88.403-1.323.268-.44.67-.916 1.205-1.426l.403.415-.22.512c-.098.098-.17.195-.22.293z"/><path d="M12.854 14.134c.049.025.073.037.073.037.073-.122.146-.195.22-.22.073-.024.146-.037.22-.037.292 0 .525.098.695.293.171.195.256.451.256.768 0 .366-.146.707-.439 1.024-.293.317-.659.549-1.097.695-.439.147-.892.22-1.353.22-.61 0-1.146-.159-1.609-.476-.463-.318-.695-.732-.695-1.244 0-.39.122-.756.366-1.097.244-.342.585-.622 1.024-.842.439-.22.927-.329 1.463-.329.146 0 .293.012.44.037.146.024.28.061.402.11zm-.878 2.854c.244 0 .476-.073.695-.22.22-.146.33-.33.33-.549 0-.195-.05-.354-.146-.476-.098-.122-.22-.183-.366-.183-.244 0-.476.085-.695.256-.22.171-.329.378-.329.622 0 .195.049.342.146.44.097.098.22.146.365.146z"/><path d="M19.366 13.22c.39 0 .707.122.951.366.244.243.366.561.366.95 0 .44-.158.829-.476 1.17-.317.342-.732.512-1.244.512-.39 0-.72-.134-.988-.403-.268-.268-.403-.598-.403-.988 0-.44.159-.829.476-1.17.318-.342.732-.512 1.244-.512z"/></svg>
+                        </div>
                         <h3>SuccessFactors (HR)</h3>
                         <div class="source-status" id="sf-status">Niet geladen</div>
                         <input type="file" id="sf-upload" accept=".xlsx,.csv" style="display: none;">
@@ -92,7 +95,9 @@
                     </div>
 
                     <div class="source-card">
-                        <div class="source-icon">🔐</div>
+                        <div class="source-icon sap-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.186 13.423c-.501 0-.91-.408-.91-.91s.409-.91.91-.91.91.408.91.91-.409.91-.91.91zm-2.674 0c-.501 0-.91-.408-.91-.91s.409-.91.91-.91.91.408.91.91-.409.91-.91.91zm5.348 0c-.501 0-.91-.408-.91-.91s.409-.91.91-.91.91.408.91.91-.409.91-.91.91z"/><path d="M23.281 9.857l-4.135-7.16c-.284-.492-.81-.796-1.377-.796H6.23c-.566 0-1.093.304-1.377.796L.72 9.857c-.284.492-.284 1.1 0 1.592l4.135 7.16c.284.492.81.796 1.377.796h11.54c.566 0 1.093-.304 1.377-.796l4.135-7.16c.284-.492.284-1.1 0-1.592zM12 16.708c-2.595 0-4.705-2.109-4.705-4.704S9.405 7.3 12 7.3s4.705 2.109 4.705 4.704-2.11 4.704-4.705 4.704z"/></svg>
+                        </div>
                         <h3>SAP GRC Access Control</h3>
                         <div class="source-status" id="grc-status">Niet geladen</div>
                         <input type="file" id="grc-upload" accept=".xlsx,.csv" style="display: none;">
@@ -102,7 +107,9 @@
                     </div>
 
                     <div class="source-card">
-                        <div class="source-icon">🌐</div>
+                        <div class="source-icon azure-icon">
+                            <i class="fab fa-microsoft"></i>
+                        </div>
                         <h3>Entra ID / Active Directory</h3>
                         <div class="source-status" id="ad-status">Niet geladen</div>
                         <input type="file" id="ad-upload" accept=".xlsx,.csv" style="display: none;">
