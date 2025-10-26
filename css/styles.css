@@ -546,6 +546,12 @@ header h1 {
     border: 1px solid var(--border-color);
     border-radius: 6px;
     font-size: 0.95em;
+    min-width: 250px;
+}
+
+.filter-group select option {
+    white-space: normal;
+    word-wrap: break-word;
 }
 
 /* Proposal Legend */
