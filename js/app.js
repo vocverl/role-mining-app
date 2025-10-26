@@ -247,7 +247,7 @@ const RoleMining = {
                 const satClass = role.saturation >= 90 ? 'saturation-high' :
                                 role.saturation >= 80 ? 'saturation-medium' : 'saturation-low';
 
-                html += '<tr>';
+                html += `<tr data-function="${rec.functionName}">`;
                 if (index === 0) {
                     html += `<td rowspan="${rec.sapRoles.length + rec.adGroups.length}" style="font-weight: 600; background: #f5f5f5;">${rec.functionName}</td>`;
                 }
@@ -265,7 +265,7 @@ const RoleMining = {
                 const satClass = group.saturation >= 90 ? 'saturation-high' :
                                 group.saturation >= 80 ? 'saturation-medium' : 'saturation-low';
 
-                html += '<tr>';
+                html += `<tr data-function="${rec.functionName}">`;
                 html += `<td><span style="padding: 4px 8px; background: #4CAF50; color: white; border-radius: 4px; font-size: 0.8em;">AD Group</span></td>`;
                 html += `<td>${group.groupName}</td>`;
                 html += `<td><div class="saturation-cell ${satClass}">${group.saturation.toFixed(1)}%</div></td>`;
@@ -331,8 +331,8 @@ const RoleMining = {
     filterProposalByFunction(functionName) {
         const rows = document.querySelectorAll('.matrix-table tbody tr');
         rows.forEach(row => {
-            const firstCell = row.querySelector('td:first-child');
-            if (!functionName || firstCell.textContent.includes(functionName)) {
+            const rowFunction = row.getAttribute('data-function');
+            if (!functionName || rowFunction === functionName) {
                 row.style.display = '';
             } else {
                 row.style.display = 'none';
