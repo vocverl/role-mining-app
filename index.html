@@ -149,9 +149,11 @@
                     </div>
                 </div>
 
-                <button class="btn-primary" onclick="RoleMining.startAnalysis()">
-                    Start Role Mining Analyse →
-                </button>
+                <div class="step-navigation">
+                    <button class="btn-primary" onclick="RoleMining.startAnalysis()">
+                        Start Role Mining Analyse →
+                    </button>
+                </div>
             </div>
 
             <!-- Step 2: Role Mining Analysis -->
@@ -197,9 +199,14 @@
                     </div>
                 </div>
 
-                <button class="btn-primary" onclick="RoleMining.generateProposal()" style="display: none;" id="btn-generate-proposal">
-                    Genereer Proposal Matrix →
-                </button>
+                <div class="step-navigation">
+                    <button class="btn-secondary" onclick="RoleMining.goToStep(1)">
+                        ← Vorige Stap
+                    </button>
+                    <button class="btn-primary" onclick="RoleMining.generateProposal()" style="display: none;" id="btn-generate-proposal">
+                        Genereer Proposal Matrix →
+                    </button>
+                </div>
             </div>
 
             <!-- Step 3: Proposal Matrix -->
@@ -252,13 +259,18 @@
                     <!-- Matrix will be generated dynamically -->
                 </div>
 
-                <div class="proposal-actions">
-                    <button class="btn-secondary" onclick="RoleMining.exportProposal()">
-                        📥 Download Proposal (Excel)
+                <div class="step-navigation">
+                    <button class="btn-secondary" onclick="RoleMining.goToStep(2)">
+                        ← Vorige Stap
                     </button>
-                    <button class="btn-primary" onclick="RoleMining.startValidation()">
-                        Stuur naar Role Owner voor Validatie →
-                    </button>
+                    <div class="proposal-actions">
+                        <button class="btn-secondary" onclick="RoleMining.exportProposal()">
+                            📥 Download Proposal (Excel)
+                        </button>
+                        <button class="btn-primary" onclick="RoleMining.startValidation()">
+                            Stuur naar Role Owner voor Validatie →
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -296,9 +308,14 @@
                     </div>
                 </div>
 
-                <button class="btn-primary" onclick="RoleMining.prepareExport()" id="btn-prepare-export" disabled>
-                    Bereid GRC Export voor →
-                </button>
+                <div class="step-navigation">
+                    <button class="btn-secondary" onclick="RoleMining.goToStep(3)">
+                        ← Vorige Stap
+                    </button>
+                    <button class="btn-primary" onclick="RoleMining.prepareExport()" id="btn-prepare-export" disabled>
+                        Bereid GRC Export voor →
+                    </button>
+                </div>
             </div>
 
             <!-- Step 5: Export -->
@@ -338,13 +355,18 @@
                     </div>
                 </div>
 
-                <div class="export-actions">
-                    <button class="btn-secondary" onclick="RoleMining.downloadExport()">
-                        💾 Download Export File
+                <div class="step-navigation">
+                    <button class="btn-secondary" onclick="RoleMining.goToStep(4)">
+                        ← Vorige Stap
                     </button>
-                    <button class="btn-primary" onclick="RoleMining.sendToGRC()">
-                        Verzend naar GRC BRM →
-                    </button>
+                    <div class="export-actions">
+                        <button class="btn-secondary" onclick="RoleMining.downloadExport()">
+                            💾 Download Export File
+                        </button>
+                        <button class="btn-primary" onclick="RoleMining.sendToGRC()">
+                            Verzend naar GRC BRM →
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -375,9 +397,14 @@
                     </div>
                 </div>
 
-                <button class="btn-primary" onclick="RoleMining.startReprovisioning()" id="btn-start-repro" disabled>
-                    Start Reprovisioning →
-                </button>
+                <div class="step-navigation">
+                    <button class="btn-secondary" onclick="RoleMining.goToStep(5)">
+                        ← Vorige Stap
+                    </button>
+                    <button class="btn-primary" onclick="RoleMining.startReprovisioning()" id="btn-start-repro" disabled>
+                        Start Reprovisioning →
+                    </button>
+                </div>
             </div>
 
             <!-- Step 7: Reprovisioning -->
@@ -437,9 +464,14 @@
                     </div>
                 </div>
 
-                <button class="btn-primary" onclick="RoleMining.finishProcess()">
-                    ✓ Proces Afronden
-                </button>
+                <div class="step-navigation">
+                    <button class="btn-secondary" onclick="RoleMining.goToStep(6)">
+                        ← Vorige Stap
+                    </button>
+                    <button class="btn-primary" onclick="RoleMining.finishProcess()">
+                        ✓ Proces Afronden
+                    </button>
+                </div>
             </div>
         </div>
     </div>

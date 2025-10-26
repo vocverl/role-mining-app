@@ -338,6 +338,22 @@ header h1 {
     background: #3798c4;
 }
 
+/* Step Navigation */
+.step-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    gap: 15px;
+}
+
+.step-navigation .btn-secondary,
+.step-navigation .btn-primary {
+    margin-top: 0;
+}
+
 /* Demo Notice */
 .demo-mode-notice {
     display: flex;
@@ -567,6 +583,13 @@ header h1 {
 .matrix-table td {
     padding: 10px 8px;
     border-bottom: 1px solid var(--border-color);
+    white-space: normal;
+    word-wrap: break-word;
+    min-width: 150px;
+}
+
+.matrix-table td:first-child {
+    min-width: 200px;
 }
 
 .matrix-table tr:hover {

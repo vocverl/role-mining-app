@@ -31,8 +31,8 @@ const DemoData = {
         { employeeId: '50048502', name: 'Claire Veen', department: 'Finance', function: 'Financial Controller', team: 'Finance', location: 'Zwolle' },
         { employeeId: '50048503', name: 'Henk Brouwer', department: 'Finance', function: 'Financial Controller', team: 'Finance', location: 'Zwolle' },
 
-        { employeeId: '50048601', name: 'Sanne Post', department: 'HR', function: 'HR Business Partner', team: 'HR', location: 'Zwolle' },
-        { employeeId: '50048602', name: 'Tim Mol', department: 'HR', function: 'HR Business Partner', team: 'HR', location: 'Zwolle' },
+        { employeeId: '50048601', name: 'Sanne Post', department: 'HR', function: 'HR Adviseur', team: 'HR', location: 'Zwolle' },
+        { employeeId: '50048602', name: 'Tim Mol', department: 'HR', function: 'HR Adviseur', team: 'HR', location: 'Zwolle' },
     ],
 
     // SAP GRC Access Control Roles
@@ -42,7 +42,7 @@ const DemoData = {
         { roleId: 'BR-PROCESOPERATOR', roleName: 'Proces Operator', roleType: 'Business', system: 'S/4', riskLevel: 'Low' },
         { roleId: 'BR-TECH_SPECIALIST', roleName: 'Technisch Specialist', roleType: 'Business', system: 'S/4', riskLevel: 'Medium' },
         { roleId: 'BR-FINANCE_CONTROLLER', roleName: 'Financial Controller', roleType: 'Business', system: 'S/4', riskLevel: 'High' },
-        { roleId: 'BR-HR_PARTNER', roleName: 'HR Business Partner', roleType: 'Business', system: 'S/4', riskLevel: 'High' },
+        { roleId: 'BR-HR_ADVISEUR', roleName: 'HR Adviseur', roleType: 'Business', system: 'S/4', riskLevel: 'High' },
 
         // Technical Roles
         { roleId: 'SAP_BC_BASIS_ADMIN', roleName: 'SAP Basis Administrator', roleType: 'Technical', system: 'S/4', riskLevel: 'Critical' },
