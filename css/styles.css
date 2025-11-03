@@ -7,13 +7,13 @@
     --warning-color: #E6C00E;
     --danger-color: #f44336;
     --info-color: #3EA0CF;
-    --bg-color: #f8f9fa;
+    --bg-color: #ffffff;
     --card-bg: #ffffff;
-    --text-primary: #212121;
+    --text-primary: #333333;
     --text-secondary: #666666;
-    --border-color: #e5e7eb;
-    --shadow: 0 2px 8px rgba(62,160,207,0.1);
-    --shadow-lg: 0 4px 16px rgba(62,160,207,0.15);
+    --border-color: #e0e0e0;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-lg: 0 2px 8px rgba(0,0,0,0.12);
     --profilus-blue: #3EA0CF;
     --profilus-orange: #E6C00E;
 }
@@ -26,7 +26,7 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background: var(--bg-color);
+    background: #f5f5f5;
     color: var(--text-primary);
     line-height: 1.6;
 }
@@ -39,12 +39,11 @@ body {
 
 /* Header */
 header {
-    margin-bottom: 15px;
-    padding: 15px 30px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    margin: 0 0 30px 0;
+    padding: 25px 40px;
+    background: var(--primary-color);
     color: white;
-    border-radius: 8px;
-    box-shadow: var(--shadow);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
 .header-content {
@@ -133,8 +132,8 @@ header h1 {
 }
 
 .step:hover .step-number {
-    transform: scale(1.1);
-    box-shadow: 0 0 0 3px rgba(44, 60, 138, 0.1);
+    transform: scale(1.05);
+    box-shadow: 0 0 0 2px rgba(62, 160, 207, 0.2);
 }
 
 .step-number {
@@ -155,7 +154,7 @@ header h1 {
 .step.active .step-number {
     background: var(--primary-color);
     color: white;
-    box-shadow: 0 0 0 3px rgba(44, 60, 138, 0.2);
+    box-shadow: 0 0 0 2px rgba(62, 160, 207, 0.25);
 }
 
 .step.completed .step-number {
@@ -229,9 +228,9 @@ header h1 {
 }
 
 .source-card {
-    background: linear-gradient(135deg, #f8f9fa, #ffffff);
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
     padding: 20px;
     text-align: center;
     transition: all 0.3s ease;
@@ -311,7 +310,7 @@ header h1 {
 }
 
 .btn-upload:hover {
-    background: #1976d2;
+    background: #2e8eb8;
     transform: scale(1.05);
 }
 
@@ -330,7 +329,7 @@ header h1 {
 }
 
 .btn-primary:hover:not(:disabled) {
-    background: #1e2b6e;
+    background: #2e8eb8;
     transform: translateY(-1px);
 }
 
@@ -353,7 +352,7 @@ header h1 {
 }
 
 .btn-secondary:hover {
-    background: #3798c4;
+    background: #d4ad0d;
 }
 
 /* Step Navigation */
@@ -378,7 +377,7 @@ header h1 {
     align-items: center;
     gap: 12px;
     padding: 12px 15px;
-    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    background: #e3f2fd;
     border-left: 3px solid var(--info-color);
     border-radius: 6px;
     margin: 15px 0;
@@ -393,8 +392,9 @@ header h1 {
 .data-summary {
     margin: 15px 0;
     padding: 15px;
-    background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+    background: #f5f5f5;
     border-radius: 8px;
+    border: 1px solid var(--border-color);
 }
 
 .data-summary h3 {
@@ -456,7 +456,7 @@ header h1 {
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--primary-color), var(--info-color));
+    background: var(--primary-color);
     width: 0%;
     transition: width 0.5s ease;
     display: flex;
@@ -478,9 +478,9 @@ header h1 {
 }
 
 .result-card {
-    background: linear-gradient(135deg, #fafafa, #ffffff);
+    background: white;
     border: 1px solid var(--border-color);
-    border-radius: 12px;
+    border-radius: 8px;
     padding: 25px;
     margin-bottom: 20px;
 }
@@ -662,9 +662,10 @@ header h1 {
     display: flex;
     gap: 20px;
     padding: 25px;
-    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
-    border-radius: 12px;
+    background: #e8f5e9;
+    border-radius: 8px;
     margin-bottom: 30px;
+    border: 1px solid #c8e6c9;
 }
 
 .info-icon {
@@ -869,9 +870,9 @@ header h1 {
 }
 
 .repro-card {
-    background: linear-gradient(135deg, #fafafa, #ffffff);
-    border: 2px solid var(--border-color);
-    border-radius: 12px;
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
     padding: 25px;
 }
 
@@ -904,7 +905,7 @@ header h1 {
 
 .status-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--success-color), #66bb6a);
+    background: var(--success-color);
     width: 0%;
     transition: width 1s ease;
 }
@@ -928,8 +929,9 @@ header h1 {
 .repro-summary {
     margin-top: 40px;
     padding: 30px;
-    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
-    border-radius: 12px;
+    background: #e8f5e9;
+    border-radius: 8px;
+    border: 1px solid #c8e6c9;
 }
 
 .success-message {
