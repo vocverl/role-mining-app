@@ -1,19 +1,21 @@
 /* Role Mining Application Styles */
 
 :root {
-    --primary-color: #2c3c8a;
-    --secondary-color: #4aaedf;
+    --primary-color: #1a237e;
+    --secondary-color: #3949ab;
     --success-color: #4CAF50;
     --warning-color: #FFC107;
     --danger-color: #f44336;
-    --info-color: #4aaedf;
-    --bg-color: #f0f4ff;
+    --info-color: #3949ab;
+    --bg-color: #f5f7fa;
     --card-bg: #ffffff;
     --text-primary: #212121;
     --text-secondary: #666666;
-    --border-color: #d4e4f7;
-    --shadow: 0 2px 8px rgba(44,60,138,0.1);
-    --shadow-lg: 0 4px 16px rgba(44,60,138,0.15);
+    --border-color: #e0e3e8;
+    --shadow: 0 2px 8px rgba(26,35,126,0.1);
+    --shadow-lg: 0 4px 16px rgba(26,35,126,0.15);
+    --profilus-blue: #1a237e;
+    --profilus-light: #3949ab;
 }
 
 * {
@@ -51,11 +53,40 @@ header {
     gap: 15px;
 }
 
-.vitens-logo {
-    height: 45px;
+/* Profilus Logo */
+.profilus-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     background: white;
-    padding: 6px 12px;
-    border-radius: 6px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo-icon {
+    font-size: 2em;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.logo-name {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--profilus-blue);
+    letter-spacing: 1px;
+}
+
+.logo-tagline {
+    font-size: 0.65em;
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .header-text {
