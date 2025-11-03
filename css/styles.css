@@ -1,21 +1,21 @@
 /* Role Mining Application Styles */
 
 :root {
-    --primary-color: #1a237e;
-    --secondary-color: #3949ab;
+    --primary-color: #3EA0CF;
+    --secondary-color: #E6C00E;
     --success-color: #4CAF50;
-    --warning-color: #FFC107;
+    --warning-color: #E6C00E;
     --danger-color: #f44336;
-    --info-color: #3949ab;
-    --bg-color: #f5f7fa;
+    --info-color: #3EA0CF;
+    --bg-color: #f8f9fa;
     --card-bg: #ffffff;
     --text-primary: #212121;
     --text-secondary: #666666;
-    --border-color: #e0e3e8;
-    --shadow: 0 2px 8px rgba(26,35,126,0.1);
-    --shadow-lg: 0 4px 16px rgba(26,35,126,0.15);
-    --profilus-blue: #1a237e;
-    --profilus-light: #3949ab;
+    --border-color: #e5e7eb;
+    --shadow: 0 2px 8px rgba(62,160,207,0.1);
+    --shadow-lg: 0 4px 16px rgba(62,160,207,0.15);
+    --profilus-blue: #3EA0CF;
+    --profilus-orange: #E6C00E;
 }
 
 * {
@@ -54,39 +54,9 @@ header {
 }
 
 /* Profilus Logo */
-.profilus-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: white;
-    padding: 8px 16px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.logo-icon {
-    font-size: 2em;
-}
-
-.logo-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.2;
-}
-
-.logo-name {
-    font-size: 1.2em;
-    font-weight: 700;
-    color: var(--profilus-blue);
-    letter-spacing: 1px;
-}
-
-.logo-tagline {
-    font-size: 0.65em;
-    color: var(--text-secondary);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+.profilus-logo-img {
+    height: 60px;
+    width: auto;
 }
 
 .header-text {
